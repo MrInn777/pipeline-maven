@@ -12,7 +12,7 @@ node {
    // Mark the code build 'stage'....
    stage 'Build'
    // Run the maven build
-   sh "${MAVEN_HOME}/bin/mvn -Dmaven.test.failure.ignore clean package"
-   //sh "${MAVEN_HOME}/bin/mvn clean package"
+   //sh "${MAVEN_HOME}/bin/mvn -Dmaven.test.failure.ignore clean package"
+   sh "${mvnHome}/bin/mvn clean install"
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
